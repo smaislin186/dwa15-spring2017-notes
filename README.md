@@ -6,7 +6,7 @@ Spring 2017
 Short URL: <http://notes.dwa15.com>
 
 ## Reporting issues
-Use [Github's Issues section for this repository](https://github.com/susanBuck/dwa15-spring17-notes/issues) to report any issues with the notes.
+Use [Github's Issues section for this repository](https://github.com/susanBuck/dwa15-spring2017-notes/issues) to report any issues with the notes.
 
 Examples of the kind of issues that may need reporting:
 + Typos
