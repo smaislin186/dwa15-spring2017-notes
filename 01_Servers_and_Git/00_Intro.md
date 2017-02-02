@@ -52,7 +52,7 @@ To continue your education on Git, you can refer to the following resources:
 
 + [Scott Chacon's Pro Git Book](http://Git-scm.com/book)
 + [Chacon's Git Videos](http://Git-scm.com/videos) (about 25 min total)
-
++ [gitref.org](http://gitref.org)
 
 ## To-do
 1. Local server (MAMP/XAMPP)
