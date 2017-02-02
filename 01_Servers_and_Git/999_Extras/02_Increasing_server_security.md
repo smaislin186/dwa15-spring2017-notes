@@ -1,3 +1,5 @@
+**SUPPLEMENTAL/OPTIONAL MATERIAL**
+
 # Summary
 In the following instructions, we'll look at the procedures for &ldquo;hardening&rdquo; your DigitalOcean Droplet, making it more difficult for malicious hackers to compromise your server.
 

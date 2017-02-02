@@ -1,4 +1,6 @@
-# Digital Ocean Backups
+**SUPPLEMENTAL/OPTIONAL MATERIAL**
+
+# DigitalOcean Backups
 
 DigitalOcean has a feature called *Snapshots* where you can take a, well, snapshot of your Droplet in it's current state, including all configurations and data.
 
