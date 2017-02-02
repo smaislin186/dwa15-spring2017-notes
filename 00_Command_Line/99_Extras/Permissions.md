@@ -45,7 +45,7 @@ Given this string: `-rwxr-xr--`
 + What are the read, write, execute settings for the Group?
 + What are the read, write, execute settings for everyone else?
 
-What about for this this string: `drx-------`?
+What about for this this string: `dr-x------`?
 
 [The solutions for both of these can be found here.](http://making-the-internet.s3.amazonaws.com/sysadmin-permission-examples@2x.png)
 
