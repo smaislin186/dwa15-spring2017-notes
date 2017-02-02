@@ -173,7 +173,7 @@ From [gitref.org](http://gitref.org/basic):
 
 ## Vocabulary review
 
-From: <https://help.github.com/articles/github-glossary:
+From: <https://help.github.com/articles/github-glossary>:
 
 ### Git
 Git is an open source program for tracking changes in text files. It was written by the author of the Linux operating system, and is the core technology that GitHub.com [...] is built on top of.
