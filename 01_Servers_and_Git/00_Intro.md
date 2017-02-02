@@ -56,9 +56,10 @@ To continue your education on Git, you can refer to the following resources:
 
 ## To-do
 1. Local server (MAMP/XAMPP)
-2. Production server (DigitalOcean)
-3. Git/Version Control
-4. Domains
+3. Git
+4. Github.com
+5. Production server (DigitalOcean)
+6. Domains
 
 The challenge ahead: many different variables...
 
