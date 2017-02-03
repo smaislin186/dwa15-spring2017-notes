@@ -1,13 +1,15 @@
 ## Domain setup
-Right now you can access your DigitalOcean droplet by typing its IP address into your browser. This works but is hard to remember, and it'd also be nice to run several web applications on your one Droplet, each with a unique subdomain.
+At this point, work on your DigitalOcean server can be viewed via your server's IP address.
 
-To set this up, we're going to configure a domain and subdomains for use with DigitalOcean.
+Next, we want to set it up so that you can a) use a custom domain and b) run multiple applications from the server, each either their own subdomain.
+
+In order to do this, you'll need a domain name.
 
 If you have an existing domain you'd like to use, that's fine. If not, you can create a new domain name via a service like **[Namecheap](http://www.namecheap.com/?aff=61057)**. As of this writing, Namecheap is offering free domain names for students (with a `.edu` email address) via <https://nc.me/>.
 
 After you create your domain, find your **DNS settings** within your domain companies' control panel. In Namecheap, these settings are found by finding the domain you'd like to configure in your **Domain List** and then clicking **Manage**. Then, find the tab for **Advanced DNS**
 
-In your DNS settings, you'll set both your `@` and `www` hostname to your DigitalOcean IP address.
+In your DNS settings, you'll set both your `@` and `www` hostname to your DigitalOcean's server IP address.
 
 Also, while you're there, add a new *A Record* with the *host* `hello-world` which also points to the same IP. This will create the subdomain `http://hello-world.yourdomain.com`.
 
@@ -15,7 +17,7 @@ Also, while you're there, add a new *A Record* with the *host* `hello-world` whi
 
 When you're done, click **Save all Changes**.
 
-Give the above settings a few minutes to take effect, then test out your domain. You should see the same results you saw above when you tested your IP address, but this time it's loaded via your domain name:
+Give the above settings a few minutes to take effect, then test out your domain. You should see the same results you saw when you visited your server via the IP address, but this time it's loaded via your domain name:
 
 <img src='http://making-the-internet.s3.amazonaws.com/vc-namecheap-domain-first-working@2x.png' style='max-width:958px; width:100%' alt='First domain working'>
 
