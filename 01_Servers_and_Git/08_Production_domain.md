@@ -1,3 +1,7 @@
+Quick reference to the config file used in this note set:
+
+`/etc/apache2/sites-enabled/000-default.conf`
+
 ## Domain setup
 At this point, work on your DigitalOcean server can be viewed via your server's IP address.
 
@@ -13,13 +17,13 @@ In your DNS settings, you'll set both your `@` and `www` hostname to your Digita
 
 Also, while you're there, add a new *A Record* with the *host* `hello-world` which also points to the same IP. This will create the subdomain `http://hello-world.yourdomain.com`.
 
-<img src='http://making-the-internet.s3.amazonaws.com/version-control-namecheap-dns@2x.png' style='max-width:1210px; width:100%' alt='Namecheap DNS'>
+<img src='http://making-the-internet.s3.amazonaws.com/version-control-namecheap-dns@2x.png' style='max-width:1015px; width:100%' alt='Namecheap DNS'>
 
 When you're done, click **Save all Changes**.
 
-Give the above settings a few minutes to take effect, then test out your domain. You should see the same results you saw when you visited your server via the IP address, but this time it's loaded via your domain name:
+Give the above settings a few minutes to take effect, then test out your domain. You should see the same results you saw when you visited your server via the IP address, but this time it's loaded via your domain name.
 
-<img src='http://making-the-internet.s3.amazonaws.com/vc-namecheap-domain-first-working@2x.png' style='max-width:958px; width:100%' alt='First domain working'>
+<img src='http://making-the-internet.s3.amazonaws.com/vc-namecheap-domain-first-working@2x.png' style='max-width:945px; width:100%' alt='First domain working'>
 
 ### DNS Cache
 If your domain is not working yet, it could because your DNS settings are being cached.
@@ -50,7 +54,7 @@ To start, copy the following code into a new text editor window (your code edito
 
 ```bash
 <VirtualHost *:80>
-  ServerName hello-world.dwa15-practice.biz
+  ServerName hello-world.dwa15.me
   DocumentRoot "/var/www/html/hello-world"
   <Directory "/var/www/html/hello-world">
     AllowOverride All
@@ -58,9 +62,9 @@ To start, copy the following code into a new text editor window (your code edito
 </VirtualHost>
 ```
 
-In plain english, this VirtualBlock block code says: *when traffic comes in via `hello-world.dwa15-practice.biz`, point to the `/var/www/html/hello-world` directory*.
+In plain english, this VirtualBlock block code says: *when traffic comes in via `hello-world.dwa15.me`, point to the `/var/www/html/hello-world` directory*.
 
-Edit your VirtualHost block so that the the `ServerName` value matches *your* subdomain. In this example, it's set to `hello-world.dwa15-practice.biz` but you'll need to change it to match your domain.
+Edit your VirtualHost block so that the the `ServerName` value matches *your* subdomain. In this example, it's set to `hello-world.dwa15.me` but you'll need to change it to match your domain.
 
 Also change the `DocumentRoot` and `Directory` path to match the path to your hello-world directory on DigitalOcean, if it's different from our example.
 
@@ -78,7 +82,7 @@ This file is where all your VirtualHost specifications live.
 
 In nano, at the *bottom* of `000-default.conf`, paste in your edited VirtualHost block.
 
-<img src='http://making-the-internet.s3.amazonaws.com/vc-pasting-virtual-host-block@2x.png' style='max-width:75%; width:877px'>
+<img src='http://making-the-internet.s3.amazonaws.com/vc-pasting-virtual-host-block@2x.png' style='max-width:1152px'>
 
 Tip for Cmder users: If you try and paste multiple lines into Cmder using keyboard shortcuts, it will paste just the first line. To get it to paste *all* the lines, right click the top bar in Cmder and choose `Edit` -> `Paste` ([screencast demo](http://screencast.com/t/u43zTSEx4GKl)).
 
