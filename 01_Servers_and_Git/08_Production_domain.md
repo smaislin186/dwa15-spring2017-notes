@@ -1,6 +1,19 @@
-Quick reference to the config file used in this note set:
+## Quick reference
 
-`/etc/apache2/sites-enabled/000-default.conf`
+Config file: `/etc/apache2/sites-enabled/000-default.conf`
+
+Restart Apache: `service apache2 restart`
+
+VirtualHost template:
+```xml
+<VirtualHost *:80>
+  ServerName hello-world.dwa15.me
+  DocumentRoot "/var/www/html/hello-world"
+  <Directory "/var/www/html/hello-world">
+    AllowOverride All
+  </Directory>
+</VirtualHost>
+```
 
 ## Domain setup
 At this point, work on your DigitalOcean server can be viewed via your server's IP address.
@@ -26,25 +39,25 @@ Give the above settings a few minutes to take effect, then test out your domain.
 <img src='http://making-the-internet.s3.amazonaws.com/vc-namecheap-domain-first-working@2x.png' style='max-width:945px; width:100%' alt='First domain working'>
 
 ### DNS Cache
-If your domain is not working yet, it could because your DNS settings are being cached.
+If your domain is not working yet, it could be because the changes have not propagated on Namecheap's DNS yet, in which case you just have to wait it out (their documentation says it could take about 30 minutes).
 
-To get around this, try the following steps:
+It could also be related to caching on your own computer, so the following actions might get it working:
 
 1. Clear your browser cache.
 2. Clear your DNS cache
     + [Mac instructions](https://support.apple.com/en-us/HT202516)
     + Windows/Cmder run this command: `ipconfig /flushdns`.
-
-Try again. Still not loading?
-
 3. Try a different browser.
-4. Try accessing your URL via [this proxy](http://www.megaproxy.com/freesurf/). Does it load there? If it loads there, it just means your computer is still caching old settings.
+4. Try accessing your URL via [this proxy](http://www.megaproxy.com/freesurf/).
+5. Ask a friend on a different computer/network to test it.
+
+If all of those tricks fail to get the domain to work, double check all your steps, and then continue to wait it out. If after 30 minutes to an hour it's still not working, seek out help from the class.
 
 
-## Virtual Host / Subdomain setup
-Your primary domain is working, now lets get a subdomain working (`http://hello-world.domain.com`).
+## Virtual Host/Subdomain setup
+Your primary domain is working, now let's get a subdomain working (`http://hello-world.domain.com`).
 
-In the above step, you already set up your DNS for the subdomain, making it so that traffic hitting `http://hello-world.domain.com` will point to your IP address.
+In the above step, you already set up your DNS for the subdomain, making it so that traffic via `http://hello-world.domain.com` will point to your IP address.
 
 Now we need to give the server instructions on what to do with this traffic.
 
@@ -64,9 +77,9 @@ To start, copy the following code into a new text editor window (your code edito
 
 In plain english, this VirtualBlock block code says: *when traffic comes in via `hello-world.dwa15.me`, point to the `/var/www/html/hello-world` directory*.
 
-Edit your VirtualHost block so that the the `ServerName` value matches *your* subdomain. In this example, it's set to `hello-world.dwa15.me` but you'll need to change it to match your domain.
+Edit this VirtualHost block so that the the `ServerName` (`hello-world.dwa15.dev`) value matches *your* domain.
 
-Also change the `DocumentRoot` and `Directory` path to match the path to your hello-world directory on DigitalOcean, if it's different from our example.
+Also change the `DocumentRoot` **and** `Directory` path to match the path to your hello-world directory on DigitalOcean, if it's different from the example.
 
 With your edits in place, we'll now show you where to put this code on your server...
 
@@ -78,15 +91,13 @@ Open `/etc/apache2/sites-enabled/000-default.conf` in nano:
 $ nano /etc/apache2/sites-enabled/000-default.conf
 ```
 
-This file is where all your VirtualHost specifications live.
+This file is where your VirtualHost specifications live.
 
 In nano, at the *bottom* of `000-default.conf`, paste in your edited VirtualHost block.
 
 <img src='http://making-the-internet.s3.amazonaws.com/vc-pasting-virtual-host-block@2x.png' style='max-width:1152px'>
 
 Tip for Cmder users: If you try and paste multiple lines into Cmder using keyboard shortcuts, it will paste just the first line. To get it to paste *all* the lines, right click the top bar in Cmder and choose `Edit` -> `Paste` ([screencast demo](http://screencast.com/t/u43zTSEx4GKl)).
-
-
 
 When you're done editing the new VirtualHost block, save your changes to `000-default.conf` (`ctrl` + `x`, then `y`, then *Enter*).
 
@@ -100,28 +111,24 @@ $ service apache2 restart
 
 Once the restart is complete, test out your subdomain `http://hello-world.yourdomain.com`.
 
-<img src='http://making-the-internet.s3.amazonaws.com/version-control-subdomain-good@2x.png' class='' style='max-width:447px; width:75%' alt=''>
+<img src='http://making-the-internet.s3.amazonaws.com/version-control-subdomain-good@2x.png' class='' style='max-width:603px; alt=''>
 
 
 ## Recap
-Keep these notes handy for when you set up projects, because each project should have its own subdomain.
+Keep these notes handy for when you set up assignments, because each assignment should operate from its own subdomain following this convention:
+
++ `http://a1.yourdomain.com`
++ `http://a2.yourdomain.com`
++ `http://a3.yourdomain.com`
++ `http://a4.yourdomain.com`
 
 To recap, here were the steps we took to set up a new subdomain:
 
-1. Open your DNS settings in Namecheap (or whoever you domain provider is) and point your subdomain to your server's IP address.
-2. Add a *new* VirtualHost `/etc/apache2/sites-enabled/000-default.conf`. Each Subdomain will have its own VirtualHost block.
-3. Restart Apache
+1. Open DNS settings in Namecheap (or whoever you domain provider is) and point your subdomain to your server's IP address.
+2. Add a *new* VirtualHost to `/etc/apache2/sites-enabled/000-default.conf`. Each Subdomain will have its own VirtualHost block.
+3. Restart Apache (`service apache2 restart`)
 
 
-## Tips / Notes
-Find out the IP address of a domain:
-
-```bash
-$ ping domain.com
-```
-
-Find out the nameserver of a domain:
-
-```bash
-$ dig +short NS domain.com
-```
+## Notes
++ Find out the IP address of a domain by executing: `ping domain.com`
++ Find out the nameserver of a domain by executing: `dig +short NS domain.com`
