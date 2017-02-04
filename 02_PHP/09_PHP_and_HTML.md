@@ -5,9 +5,9 @@ This works for demonstration purposes, but obviously our web applications should
 
 We turn now, then, to the discussion of how PHP and HTML work together.
 
-First, it's important to know that a .php file can include both HTML and PHP code, for example:
+First, it's important to know that a .php file can include both HTML and PHP code, for example, paste the following code in a new practice file called `today.php`:
 
-```html
+```php
 <?php
 date_default_timezone_set('America/New_York');
 $day = date('l');
@@ -34,7 +34,7 @@ else {
 </html>
 ```
 
-In this code we see mostly HTML, with some PHP sprinkled in a couple places. If you run this example, you'll see the HTML produced in the browser looks like this (this example was generated on a Saturday):
+In this code we see mostly HTML, with some PHP sprinkled in a couple places. If you run this example, you'll see the HTML produced in the browser looks like this (this example was generated on a Friday):
 
 ```xml
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ In this code we see mostly HTML, with some PHP sprinkled in a couple places. If 
     <h1>Daily Planner</h1>
 
     <p>
-        Today is Saturday; it's time to relax.
+        Today is Friday; it's time to relax.
     </p>
 
 </body>
@@ -198,9 +198,9 @@ Most of the PHP code you'll see in display files will be simple echo statements:
 Today is <?php echo $day; ?>; it's time to <?php echo $toDo; ?>
 ```
 
-However, other PHP constructs will facilitate your display...
+However, other PHP constructs can facilitate your display...
 
-```
+```html
 <h1>Recent Orders</h1>
 <?php foreach($orders as $orderId => $order) { ?>
     <a href='/orders/<?php echo $orderId'> <?php echo $order['dateTime'] ?>
@@ -219,7 +219,7 @@ In the above example a *foreach loop* and *if* construct is used to produce the 
 
 For example, imagine we wanted to add the total cost of all orders to our display page:
 
-```html
+```php
 <?php
 $total = 0;
 foreach($orders as $orderId => $order) {
@@ -253,14 +253,14 @@ It's a small difference, but the terser syntax will be appreciated in complex HT
 
 With for loops, instead of writing this:
 
-```html
+```php
 <?php foreach($orders as $orderId => $order) { ?>
 
 <?php } ?>
 ```
 
 You can replace the open/close curly brackets with a `:` and `endforeach`, like so:
-```html
+```php
 <?php foreach($orders as $orderId => $order): ?>
     [...]
 <?php endforeach; ?>
@@ -269,7 +269,7 @@ You can replace the open/close curly brackets with a `:` and `endforeach`, like 
 This syntax is actually more verbose, but it makes reading the code easier since it explicitly spells out the close of the foreach block. This is advantageous for long blocks of code with lots of HTML, because when you reach the end `<?php endforeach; ?>` you know what it's ending, compared to the less explicit `<?php } ?>`.
 
 The same alternative syntax can be used for if statements:
-```html
+```php
 <?php if($order['shipped']): ?>
     Your order has shipped! Tracking: <?php echo $order['trackingNumber']; ?>
 <?php else: ?>

@@ -157,7 +157,7 @@ array(2) {
 ```
 
 ## Value types
-While they key of an array can be either a String or an Integer, the values of an array can be many different data types, and the data types can be mixed.
+While the key of an array can be either a String or an Integer, the values of an array can be many different data types, and the data types can be mixed.
 
 ```php
 $mixedBag = [
