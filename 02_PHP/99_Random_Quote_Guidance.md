@@ -6,7 +6,7 @@ If you're unfamiliar with PHP, the course PHP notes assigned as reading between 
 
 There are limitless approaches to this simple feature, such as...
 
-+ Create an array of quotes, and then use array_rand(http://php.net/manual/en/function.array-rand.php) to select one of them.
++ Create an array of quotes, and then use PHP's built-in [array_rand](http://php.net/manual/en/function.array-rand.php) to select one of them.
 
 + Create an array of quotes, [shuffle](http://php.net/manual/en/function.shuffle.php) the array, and then
 [pop](http://php.net/manual/en/function.array-pop.php) the last element from the array as your selected quote.
