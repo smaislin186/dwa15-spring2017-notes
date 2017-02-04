@@ -16,7 +16,7 @@ if(in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
     $toDo = 'relax';
 }
 else {
-    $toDo = 'work'
+    $toDo = 'work';
 }
 ?>
 
@@ -28,7 +28,7 @@ else {
 <body>
     <h1>Daily Planner</h1>
     <p>
-        Today is <?php echo $day; ?>; it's time to <?=php echo $toDo; ?>
+        Today is <?php echo $day; ?>; it's time to <?php echo $toDo; ?>.
     </p>
 </body>
 </html>
