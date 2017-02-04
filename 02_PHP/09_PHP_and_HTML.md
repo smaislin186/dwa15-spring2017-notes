@@ -69,7 +69,7 @@ if(in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
     $toDo = 'relax';
 }
 else {
-    $toDo = 'work'
+    $toDo = 'work';
 }
 ?>
 ```
@@ -101,10 +101,10 @@ __Example logic code:__
 $x = 1;
 
 function square($x) {
-    return x * x;
+    return $x * $x;
 }
 
-if($user) {
+if(isset($user)) {
     $loggedIn = true;
 }
 ?>
@@ -146,7 +146,7 @@ if(in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
     $toDo = 'relax';
 }
 else {
-    $toDo = 'work'
+    $toDo = 'work';
 }
 
 # Closing PHP tag purposefully excluded; reason why explained below.
@@ -165,7 +165,7 @@ Display file: `today.php`:
     <h1>Daily Planner</h1>
 
     <p>
-        Today is <?php echo $day; ?>; it's time to <?php echo $toDo; ?>
+        Today is <?php echo $day; ?>; it's time to <?php echo $toDo; ?>.
     </p>
 
 </body>
@@ -235,7 +235,7 @@ This is poor design&mdash; the logic used to calculate the order history total s
 
 
 ## Alternative syntax
-There are some syntax shortcuts that make PHP display code easier to integrate and read in HTML code.
+PHP has syntax shortcuts that make PHP display code easier to integrate and read in HTML code.
 
 First, there's the echo shortcut&mdash;
 
@@ -253,14 +253,15 @@ It's a small difference, but the terser syntax will be appreciated in complex HT
 
 With for loops, instead of writing this:
 
-```php
+```html
 <?php foreach($orders as $orderId => $order) { ?>
-
+    [...]
 <?php } ?>
 ```
 
 You can replace the open/close curly brackets with a `:` and `endforeach`, like so:
-```php
+
+```html
 <?php foreach($orders as $orderId => $order): ?>
     [...]
 <?php endforeach; ?>
@@ -271,8 +272,11 @@ This syntax is actually more verbose, but it makes reading the code easier since
 The same alternative syntax can be used for if statements:
 ```php
 <?php if($order['shipped']): ?>
-    Your order has shipped! Tracking: <?php echo $order['trackingNumber']; ?>
+    Your order has shipped! Tracking: <?=$order['trackingNumber'] ?>
 <?php else: ?>
-    Expected ship date: <?php echo $order['shipDate']; ?>
+    Expected ship date: <?=$order['shipDate'] ?>
 <?php endif; ?>
 ```
+
+
+Read more: [php.net Alternative syntax for control structures](http://php.net/manual/en/control-structures.alternative-syntax.php)
