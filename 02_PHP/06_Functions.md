@@ -17,8 +17,8 @@ function getCelsius(int $temperature, $includeUnit = true): String {
 }
 
 # Example usage
-echo getCelsius(75); # Output: 23.8888888889
-echo getCelsius(75, true); # Output: 23.8888888889 F
+echo getCelsius(75); # Output: 23.8888888889 F
+echo getCelsius(75, false); # Output: 23.8888888889
 ```
 
 Observations:
