@@ -37,13 +37,13 @@ Example: Chained conditionals can have several `elseif`s:
 if(age < 3) {
     $category = 'baby';
 }
-elif age < 16 {
+elseif age < 16 {
     $category = 'child';
 }
-elif age < 18 {
+elseif age < 18 {
     $category = 'adolescent';
 }
-elif age < 21 {
+elseif age < 21 {
     $category = 'young adult';
 }
 else {
