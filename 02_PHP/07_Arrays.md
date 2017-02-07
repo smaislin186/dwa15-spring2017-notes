@@ -50,7 +50,7 @@ $phrases = [
 Indexed arrays can also be written like this, where the key is implicitly defined, starting at 0.
 
 ```php
-$phrase = [
+$phrases = [
     'hola',
     'adios',
     'hasta luego',
@@ -62,7 +62,7 @@ $phrase = [
 It's not necessary for the elements of an array to be written on their own lines as shown in the above examples; the syntax can be compacted like so:
 
 ```php
-$phrase = ['hola', 'adios', 'hasta luego', 'por favor', 'de nada'];
+$phrases = ['hola', 'adios', 'hasta luego', 'por favor', 'de nada'];
 ```
 
 
