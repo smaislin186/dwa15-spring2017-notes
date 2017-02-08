@@ -14,6 +14,7 @@ Example: Either/or style conditional with an `if` and `else` construct:
 ```php
 if($age < 18) {
     $category = 'child';
+}
 else {
     $category = 'adult'
 }
