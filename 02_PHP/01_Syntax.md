@@ -39,7 +39,7 @@ Additional observations...
 * PHP statements end with a semi-colon.
 * Variables are indicated with a `$` sign.
 + Values are assigned to variables using the *assignment operator* `=` (equal sign).
-* Strings can be surrounded in single (`"F"`) or double quotes (`'Cambridge'`).
+* Strings can be surrounded in single (`'F'`) or double quotes (`"Cambridge"`).
 * Values can be joined together using the concatenation operator `.` (period).
 
 
