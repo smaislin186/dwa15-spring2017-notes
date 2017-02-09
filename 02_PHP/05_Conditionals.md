@@ -1,4 +1,4 @@
-## Conditionals
+# Conditionals
 PHP, like most programming languages, allows for conditional execution of code via `if`, `else`, and `elseif` constructs.
 
 Example: Single conditional with an `if` construct:

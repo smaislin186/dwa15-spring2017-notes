@@ -20,21 +20,21 @@ In PHP you don't have to declare a variable's data type; instead, the processor 
 
 ```php
 $location = 'Cambridge';
-echo gettype($location); # Output: string
+echo gettype($location); # string
 
 $temperature = 75;
-echo gettype($temperature); # Output: integer
+echo gettype($temperature); # integer
 
 $temperature = "75";
-echo gettype($temperature); # Output: string
+echo gettype($temperature); # string
 ```
 
-While you don't have to set data types, you can convert variable types using type casting. This is done by prefixing a value with your desired type in parenthesis.
+While you don't have to set data types, you can convert types using type casting. This is done by prefixing a value with your desired type in parenthesis, e.g.:
 
 ```php
 # Cast a floating point number to an integer
 $score = (int)10.9;
-echo gettype($score) # Output: integer     
+echo gettype($score); # integer     
 ```
 
 PHP is a loosely typed language that is lenient when it comes to setting and mixing data types. For example, the following is acceptable in PHP:

@@ -1,4 +1,4 @@
-## Defining arrays
+# Arrays
 In PHP, an array is an ordered map that associates values to keys.
 
 A new empty array can be defined like so:
@@ -18,18 +18,9 @@ $translations =
 
 Note that the array's contents is encapsulated in square brackets.
 
-Alternatively, you may see the `array()` construct used instead of square brackets:
-
-```php
-$translations = array(
-    'hello' => 'hola',
-    'goodbye' => 'adios',
-);
-```
-
-In this course, we'll strictly use the square bracket notation.
-
 Each element in the array (e.g. `hello => hola`) is made up of a **key => value pair**.
+
+These key => value pairs are separated by the symbols `=>`, which is often verbalized as &ldquo;points to&rdquo; E.g. In describing this array, you might say: &ldquo;hello *points to* hola&rdquo;
 
 Elements in an array are separated by commas; the comma after the last item in the array is optional.
 
@@ -71,7 +62,7 @@ You can access elements in an array using the square bracket syntax, *array[key]
 
 ```php
 echo $phrases[0]; # Output: hola
-echo $translations['hola'] # Output: hello
+echo $translations['goodbye']; # Output: adios
 ```
 
 You can add new values to an existing array using the square bracket syntax:
@@ -131,17 +122,9 @@ array(2) {
 }
 ```
 
-Later in the semester, we'll see more sophisticated tools for dumping data, but for now, copy and paste the following helper function into your examples so you can easily dump/see the contents of an array (and other data types as well):
+To save you time, a function called `dump` is included in the [`tools.php`](https://github.com/susanBuck/dwa15-php-practice/blob/master/tools.php) helper file discussed in notes on Imports..
 
-```php
-function dump($mixed = null) {
-    echo '<pre>';
-    var_dump($mixed);
-    echo '</pre>';
-}
-```
-
-Usage:
+Using this function is as simple as this:
 ```php
 dump($translations);
 ```
@@ -166,6 +149,29 @@ $mixedBag = [
     1, # Integers
     ['a', 'b', 'c'] # Even other Arrays!
 ];
+
+dump($mixedBag);
+```
+
+Produces:
+```xml
+array(4) {
+  [0]=>
+  bool(false)
+  [1]=>
+  float(4)
+  [2]=>
+  int(1)
+  [3]=>
+  array(3) {
+    [0]=>
+    string(1) "a"
+    [1]=>
+    string(1) "b"
+    [2]=>
+    string(1) "c"
+  }
+}
 ```
 
 An array containing other arrays is referred to as a **multidimensional array**.
@@ -190,7 +196,7 @@ $countries = [
 Accessing elements in a multi-dimensional array requires multiple levels of square brackets
 
 ```php
-echo $countries['CA']['languages']; # Output: ['English', 'French']
+dump($countries['CA']['languages'][0]); # string(7) "English"
 ```
 
 
@@ -198,36 +204,89 @@ echo $countries['CA']['languages']; # Output: ['English', 'French']
 ## Iterating through arrays
 PHP's built-in construct [foreach](http://php.net/manual/en/control-structures.foreach.php) is used to iterate through elements in an array.
 
-Examples:
+### Example 1
+Print the name of all the countries in the array
 ```php
-# Print the name of all the countries in the array
 foreach($countries as $countryCode => $country) {
     echo $country['name'].'<br>';
 }
+```
 
-# Print the country code (key) of all the countries in the array
+Produces:
+```xml
+United States
+Canada
+Mexico
+```
+
+### Example 2
+Print the country code (key) of all the countries in the array
+
+```php
 foreach($countries as $countryCode => $country) {
     echo $countryCode.'<br>';
 }
+```
 
-# Print a line that uses the country name, code (key), and languages
+Produces:
+```xml
+US
+CA
+MX
+```
+
+### Example 3
+Print a line that uses the country name, code (key), and languages
+
+```php
 foreach($countries as $countryCode => $country) {
-    echo 'Primary language(s) of '.$country['name'].' ('.$countryCode.') :'.$country['languages'].'<br>';
+    echo '<br>Primary language(s) of '.$country['name'].' ('.$countryCode.'): <br>';
+
+    foreach($country['languages'] as $key => $language) {
+        echo $language.'<br>';
+    }
 }
+```
 
-# Update the array so that all the country names are uppercase
+Produces:
+```xml
+Primary language(s) of United States (US):
+English
+
+Primary language(s) of Canada (CA):
+English
+French
+
+Primary language(s) of Mexico (MX):
+Spanish
+```
+
+
+### Example 4
+Update the array so that all the country names are uppercase
+```php
 foreach($countries as $countryCode => $country) {
-    $country[$countryCode]['name'] = strtoupper($country[$countryCode]['name']);
+    $countries[$countryCode]['name'] = strtoupper($countries[$countryCode]['name']);
+}
+```
+
+Note how indexing is used in the for each loop to access the current country in the iteration, `$countries[$countryCode]`
+
+Alternatively, if you pass your value by reference, you can edit it directly, e.g.:
+
+```php
+foreach($countries as $countryCode => &$country) {
+    $country['name'] = strtoupper($country['name']);
 }
 ```
 
 
 
 ## Built-in array functions
-Skim the complete list of built-in PHP [Array functions](http://php.net/manual/en/ref.array.php)
+Skim the complete list of built-in PHP [array functions](http://php.net/manual/en/ref.array.php) so you're aware of what's available.
 
-Sampling of commonly used functions:
-+ count — Count all elements in an array, or something in an object
+Sampling of commonly used array functions:
++ count — Count all elements in an array
 + in_array — Checks if a value exists in an array
 + krsort — Sort an array by key in reverse order
 + ksort — Sort an array by key

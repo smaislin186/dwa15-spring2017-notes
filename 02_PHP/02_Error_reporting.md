@@ -3,7 +3,7 @@ Before digging further into the PHP language, it's useful to configure your serv
 
 PHP's error reporting threshold and display method can be configured via your server's PHP configuration file, `php.ini`.
 
-Because there are often multiple `php.ini` files on a system, we want to make sure we edit the one that our local server is actually using. To determine this, create a new file in your htdocs folder called `info.php` and paste in the following code:
+Because there are often multiple `php.ini` files on a system, we want to make sure we edit the one that our local server is actually using. To determine this, create a new file in your document root called `phpinfo.php` and paste in the following code:
 
 ```php
 <?php
@@ -11,24 +11,45 @@ phpinfo();
 ?>
 ```
 
-When run, this built-in `phpinfo` function will display all the PHP configuration information your server is using. From the resulting table, we're interested in the following:
+When run, this built-in `phpinfo` function will display all the PHP configuration information your server is using.
 
-* The location of your `php.ini` file. Example:
-	* MAMP on Mac: `/Applications/MAMP/bin/php/php7.1.0/conf/php.ini`
-	* XAMPP on PC: `C:\xampp\php\php.ini`
-* What your `display_errors` configuration is set to.
-* What your `error_reporting` configuration is set to.
+<img src='http://making-the-internet.s3.amazonaws.com/php-phpinfo@2x.png' style='max-width:579px;' alt=''>
 
-To adjust these settings, open the `php.ini` file and change `display_errors` to be `on` and `error_reporting` to be `E_ALL`.
+In this table of info, we're interested in the following 3 values:
 
-While you're here, you can also note the path to your PHP `error_log` files (e.g. `/Applications/MAMP/logs/php_error.log`)
+1) The location of your `php.ini` file as indicated by the value for **Loaded Configuration File**
 
-**To make your changes take effect, restart your server**. Confirm the changes by refreshing your `info.php` page and confirming `display_errors` = `on` and `error_reporting` = `E_ALL`.
+<img src='http://making-the-internet.s3.amazonaws.com/php-php-info-ini-location@2x.png' style='max-width:700px;' alt=''>
+
+Example locations:
+* MAMP on Mac: `/Applications/MAMP/bin/php/php7.1.0/conf/php.ini`
+* XAMPP on PC: `C:\xampp\php\php.ini`
+
+
+2) What your `display_errors` configuration is set to. By default, it's likely `off` and we'll change it to `on`.
+
+<img src='http://making-the-internet.s3.amazonaws.com/php-php-info-display_errors@2x.png' style='max-width:700px;' alt=''>
+
+3) What your `error_reporting` configuration is set to (it'll be a numerical value)
+
+<img src='http://making-the-internet.s3.amazonaws.com/php-php-info-error_reporting@2x.png' style='max-width:700px;' alt=''>
+
+
+## Update your settings
+To adjust these settings, open the `php.ini` file from the path found in the above steps, and set...
+
++ `display_errors` to **on**
++ `error_reporting` to **E_ALL**
+
+**To make your changes take effect, restart your server**.
+
+Confirm the changes by refreshing your `info.php` page and confirming `display_errors` = `on` and `error_reporting` = `32767`. (This value, 32767, is the numerical equivalent of E_ALL)
 
 These two settings will make it so that all levels of PHP errors will be displayed on the page when they occur.
 
 On our production servers, we'll configure it so that errors are only written to log files (to avoid accidentally displaying errors to our visitors.)
 
+With errors now accessible, let's learn about the different error types you may see...
 
 ## Error types
 The following are the most common error types you'll encounter when working with PHP:

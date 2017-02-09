@@ -1,10 +1,9 @@
 # Syntax
-Let's dig into PHP with a simple example; create a new file in your `htdocs` folder called `basics.php`.
 
-A PHP file uses a `.php` extension and can contain both PHP *and* HTML.
+## Practice work
+Suggestion: Create a new directory in your htdocs folder called `php-examples` where you can store all the examples you'll be working on in the upcoming notes. Set your local server's document root to this directory so that you can access it via `http://localhost`.
 
-Paste in the following example code:
-
+For this note set, create a new file, `php-examples/syntax.php` and paste in the following code:
 ```php
 <?php
 $temperature = 75;
@@ -15,9 +14,9 @@ echo 'Temperature in '.$location.': '.$temperature.' '.$scale;
 ?>
 ```
 
-Load this file in your browser via your local server (`http://localhost/basics.php`); it should look like this:
+Load this file in your browser via your local server (`http://localhost/syntax.php`); it should look like this:
 
-<img src='http://making-the-internet.s3.amazonaws.com/php-basics-in-browser@2x.png' style='max-width:539px;' alt='Basics page loaded in the browser'>
+<img src='http://making-the-internet.s3.amazonaws.com/php-syntax-in-browser@2x.png' style='max-width:595px;' alt='Basics PHP page loaded in the browser'>
 
 Study each line of the example and note that it...
 
@@ -46,7 +45,7 @@ Additional observations...
 ## View Source
 Use your browser's *View Source* feature to look at the underlying source code your browser processes. Note how you don't see the PHP code since it's processed on the server rather than the browser; you only see any resulting output.
 
-<img src='http://making-the-internet.s3.amazonaws.com/php-basics-view-source@2x.png' style='max-width:539px;' alt='View source of the basics example'>
+<img src='http://making-the-internet.s3.amazonaws.com/php-syntax-view-source@2x.png' style='max-width:595px;' alt='View source of the basics example'>
 
 
 ## Comments

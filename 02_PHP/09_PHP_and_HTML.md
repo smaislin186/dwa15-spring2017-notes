@@ -1,4 +1,4 @@
-## PHP and HTML
+# PHP and HTML
 In all the examples thus far, we've been running blocks of PHP code in a .php file, and we were able to see the results by running the file via a server, with the output displayed in the browser.
 
 This works for demonstration purposes, but obviously our web applications should ultimately be producing properly formatted HTML web pages.
@@ -7,7 +7,7 @@ We turn now, then, to the discussion of how PHP and HTML work together.
 
 First, it's important to know that a .php file can include both HTML and PHP code, for example, paste the following code in a new practice file called `today.php`:
 
-```php
+```html
 <?php
 date_default_timezone_set('America/New_York');
 $day = date('l');
@@ -91,7 +91,7 @@ Before we talk about how to do that, let's first spend more time explaining the 
 ## Logic and Display
 Generally speaking, PHP code can be divided into two categories:
 
-1. Logic: Code that defines or performs logic
+1. Logic: Code that defines or performs logic, for example, setting a variable, defining or invoking a function.
 2. Display: Code that produces output (sometimes called side-effects)
 
 __Example logic code:__
@@ -116,12 +116,13 @@ Contrast that to this __example display code__:
 
 ```php
 <?php
-echo 'Hello';
+echo 'Hello<br>';
 echo square(4);
 ?>
 
 <h1>Welcome to <?php echo $title; ?></h1>
 ```
+This example would produce 3 lines of output in your HTML page.
 
 You can think of logic code as the &ldquo;brains&rdquo; of your application that is in charge of all the prep work that happens *before* output is displayed.
 
@@ -133,9 +134,11 @@ __Example display task:__ If a user has recent orders, display each one.
 
 Your logic and display code depend on one another, but following the practices of [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), it's important to keep them separate in your codebase.
 
-For a basic PHP page like the daily planner example above, this is as simple as separating the two types of code into separate files and then connecting them.
+For a basic PHP page like the daily planner example above, this is as simple as separating the two types of code into two different files and then connecting them.
 
-Logic file: `dailyPlanner.php`:
+Try it...
+
+Create a new file, `todayLogic.php` and extract the logic code from `today.php` into it:
 
 ```php
 <?php
@@ -152,9 +155,11 @@ else {
 # Closing PHP tag purposefully excluded; reason why explained below.
 ```
 
-Display file: `today.php`:
+In place of the logic code you extracted from `today.php`, add a require statement to import the code from `todayLogic.php`:
+
+
 ```html
-<?php require('dailyPlanner.php'); ?>
+<?php require('todayLogic.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,20 +177,7 @@ Display file: `today.php`:
 </html>
 ```
 
-As you can see, all the prep work needed for the page is done in the logic file, `dailyPlanner.php`. Then, the resulting HTML is built in the display file, `today.php`.
-
-In order for this to work, the display file needs to import the logic file at the top, using PHP's built-in [require](http://php.net/manual/en/function.require.php) function:
-
-```html
-<?php require('dailyPlanner.php'); ?>
-<!DOCTYPE html>
-<html>
-
-[...]
-```
-
-This makes any of the variables set in the logic file available for output in the display file.
-
+As you can see, all the prep work needed for the page is done in the logic file, `todayLogic.php`. Then, the resulting HTML is built in the display file, `today.php`.
 
 Side note:
 The above logic file file purposefully excluded a closing PHP tag; it's not needed in files that don't produce any output, and excluding it helps prevent trailing spaces from being output to the page, which can break certain PHP functionality like redirects or setting cookies.
@@ -198,7 +190,7 @@ Most of the PHP code you'll see in display files will be simple echo statements:
 Today is <?php echo $day; ?>; it's time to <?php echo $toDo; ?>
 ```
 
-However, other PHP constructs can facilitate your display...
+However, other PHP constructs can facilitate your display. Consider this hypothetical example to display a series of recent orders:
 
 ```html
 <h1>Recent Orders</h1>
@@ -217,9 +209,9 @@ However, other PHP constructs can facilitate your display...
 
 In the above example a *foreach loop* and *if* construct is used to produce the display. This kind of mixing of PHP and HTML code is okay, as long as the constructs are only for display purposes.
 
-For example, imagine we wanted to add the total cost of all orders to our display page:
+Contrast this to if we wanted to add the total cost of all orders to our display page and we did something like this:
 
-```php
+```html
 <?php
 $total = 0;
 foreach($orders as $orderId => $order) {
@@ -277,6 +269,5 @@ The same alternative syntax can be used for if statements:
     Expected ship date: <?=$order['shipDate'] ?>
 <?php endif; ?>
 ```
-
 
 Read more: [php.net Alternative syntax for control structures](http://php.net/manual/en/control-structures.alternative-syntax.php)

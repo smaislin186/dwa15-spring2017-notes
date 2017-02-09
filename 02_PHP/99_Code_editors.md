@@ -8,7 +8,7 @@ Alternatively, a more general editor like [Atom](https://atom.io) may be easier 
 
 __Atom indicating PHP errors in your code:__
 
-<img src='http://making-the-internet.s3.amazonaws.com/php-errors-in-atom@2x.png' style='max-width:408px;' alt='PHP Errors in Atom'>
+<img src='http://making-the-internet.s3.amazonaws.com/php-errors-in-atom@2x.png' style='max-width:597px;' alt='PHP Errors in Atom'>
 
 __Atom providing autocomplete functionality with PHP via the package [ autocomplete-php](https://atom.io/packages/autocomplete-php):__
 

@@ -32,13 +32,13 @@ Observations:
     * Functions can accepts 0 or more parameters, separated by commas (this example accepts 2).
     * A default argument can be assigned (`$includeUnit = true`).
     * Parameters can be type hinted (`int $temperature`), requiring arguments for that parameter to match the specified type.<sup>*</sup>
-* The body of a function is encapsulated in curly brackets.
+* The body of a function is encapsulated in curly brackets and indented.
 * Return
     * This function returns a value, but a return statement is not required.
-    * The use of `:String` is a return type declaration, indicating this function should return a String.<sup>*</sup>
+    * The use of `:String` is an optional return type declaration, indicating this function should return a String. <sup>*</sup>
 
 
-<small><sup>*</sup> New as of PHP 7</small>
+<small><sup>*</sup> New as of PHP 7. </small>
 
 
 ## Built-in functions
@@ -51,10 +51,10 @@ $luckyNumber = rand();
 $luckyNumber = rand(0, 100);
 ```
 
-__To be covered in lecture: understanding function documentation using [wordwrap](http://php.net/manual/en/function.wordwrap.php) as an example.__
+__To be covered in lecture: reading function signatures in the documentation.__
 
 
-There are many built-in PHP functions ([full reference](http://php.net/manual/en/funcref.php)); here's a summary of some commonly used ones to give you a sense of what's available:
+There are many built-in PHP functions ([full reference](http://php.net/manual/en/funcref.php)); here's a summary of some commonly used ones to give you a sense of what tools you have at your disposal:
 
 [String functions](http://php.net/manual/en/book.strings.php)
 + strstr — Find the first occurrence of a string

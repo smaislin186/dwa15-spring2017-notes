@@ -85,28 +85,28 @@ A variable declared **outside a function** is **global**. This means it is visib
 Given that, the following would not work:
 
 ~~~php
-function report_votes() {
+function reportVotes() {
 	echo "Vote count:".$votes;
 }
 
 $votes = 50; # Global
-report_votes();
+reportVotes();
 ~~~
 
-The reason is because the variable `$votes` is global, and therefor when you try to use it inside the `report_votes()` function, it doesn't know what you're talking about.
+The reason is because the variable `$votes` is global, and therefor when you try to use it inside the `reportVotes()` function, it doesn't know what you're talking about.
 
 In order to make a global variable visible in a function, you have to use the **global keyword**.
 
 You could fix the above code like this:
 
 ~~~php
-function report_votes() {
+function reportVotes() {
 	global $votes; 	# Makes the global variable $votes visible inside this function
 	echo "Vote count:".$votes;
 }
 
 $votes = 50; # Global
-report_votes(); # Outputs "Vote count: 50"
+reportVotes(); # Outputs "Vote count: 50"
 ~~~
 
 ### Local variables
@@ -266,6 +266,7 @@ upvote($votes); # Outputs 103
 ~~~
 
 
-
+<!--
 ## Reference
 + [String conversion to numbers](http://php.net/manual/en/language.types.string.php#language.types.string.conversion)
+-->
