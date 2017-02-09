@@ -270,7 +270,7 @@ foreach($countries as $countryCode => $country) {
 }
 ```
 
-Note how indexing is used in the for each loop to access the current country in the iteration, `$countries[$countryCode]`
+Note how indexing is used in the foreach loop to access the current country in the iteration, `$countries[$countryCode]`
 
 Alternatively, if you pass your value by reference, you can edit it directly, e.g.:
 
