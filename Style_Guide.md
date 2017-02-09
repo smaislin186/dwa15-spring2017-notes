@@ -1,6 +1,6 @@
 # CSCI E-15 Style Guide
 
-[Read more about usage of this style guide...]()
+[Read more about usage of this style guide...](https://github.com/susanBuck/dwa15-spring2017-notes/blob/master/02_PHP/99_Code_Style.md)
 
 
 ## Naming conventions
@@ -135,14 +135,14 @@ When the Blade templating language is introduced (not until mid-semester), that 
 For optimal readability, PHP control structures in HTML should use the `:`/`end` alternative syntax.
 
 Wrong:
-```html
+```php
 <?php foreach($students as $student) { ?>
     <?php echo $student['name']; ?><br>
 <?php } ?>
 ```
 
 Right:
-```html
+```php
 <?php foreach($students as $student): ?>
     <?php echo $student['name']; ?><br>
 <?php endforeach ?>
