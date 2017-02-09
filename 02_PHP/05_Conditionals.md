@@ -2,6 +2,7 @@
 PHP, like most programming languages, allows for conditional execution of code via `if`, `else`, and `elseif` constructs.
 
 Example: Single conditional with an `if` construct:
+
 ```php
 if($age > 18) {
     $category = 'adult';
@@ -16,7 +17,7 @@ if($age < 18) {
     $category = 'child';
 }
 else {
-    $category = 'adult'
+    $category = 'adult';
 }
 ```
 
@@ -25,7 +26,7 @@ Example: Chained conditional with the `if`, `elseif`, and `else` construct:
 if($age < 3) {
     $category = 'baby';
 }
-elseif(age < 18) {
+elseif($age < 18) {
     $category = 'child';
 }
 else {
@@ -35,16 +36,16 @@ else {
 
 Example: Chained conditionals can have several `elseif`s:
 ```php
-if(age < 3) {
+if($age < 3) {
     $category = 'baby';
 }
-elseif age < 16 {
+elseif($age < 16) {
     $category = 'child';
 }
-elseif age < 18 {
+elseif($age < 18) {
     $category = 'adolescent';
 }
-elseif age < 21 {
+elseif($age < 21) {
     $category = 'young adult';
 }
 else {
