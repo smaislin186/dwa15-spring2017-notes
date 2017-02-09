@@ -73,9 +73,9 @@ $translations =
 foreach($translations as $englishWord => $spanishWord) {
     echo $englishWord.' in Spanish is '.$spanishWord.'<br>';
 }
-
+```
 Produces:
-```xml
+```php
 hello in Spanish is hola
 goodbye in Spanish is adios
 ```
