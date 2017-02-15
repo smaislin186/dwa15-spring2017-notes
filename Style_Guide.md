@@ -13,9 +13,11 @@
 ## Formatting
 Code should use 4 spaces for indenting, not tabs.
 
-Lines should be 80 characters or less.
+PHP only files (no HTML) should aim to keep lines around 80 characters or less. Lines that stretch beyond this point should be refactored for optimal readability.
 
-There should only be one statement per line.
+Files with HTML may extend beyond this 80 character limit.
+
+In PHP-only files, there should only be one statement per line.
 
 Right:
 ```php
