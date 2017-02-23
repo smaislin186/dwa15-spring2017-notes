@@ -66,7 +66,7 @@ Points of reference:
 + [Wikipedia: Comparison of web frameworks](https://en.wikipedia.org/wiki/Comparison_of_web_frameworks#PHP)
 + [Google Trends: Laravel, Symfony, Django, Ruby on Rails, Express JS](https://trends.google.com/trends/explore?cat=32&q=Laravel,symfony,django,ruby%20on%20rails,express%20js)
 + SitePoint: Best PHP Frameworks:
-[2014](http://www.sitepoint.com/best-php-frameworks-2014/), [2015](http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/),
+[2014](http://www.sitepoint.com/best-php-frameworks-2014/), [2015](http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/)
 
 Our choice: [Laravel](http://laravel.com)
 
