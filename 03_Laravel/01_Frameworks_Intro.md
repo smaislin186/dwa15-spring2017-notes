@@ -41,11 +41,6 @@ Included in a framework are libraries that power essential web application featu
 
 By working with these existing fundamentals, it frees you up to focus on the functionality of *your* application.
 
-<!-- If I want to travel cross-country, I want to focus on the route I'll take, where I'll stop, etc. I don't want to focus on building the car.
-
-A framework is the car. It's the tested starting point, packed of features, that I can use to accomplish my trip. -->
-
-
 Why use a framework
 * Avoid reinventing the wheel
 * Work with vetted code
