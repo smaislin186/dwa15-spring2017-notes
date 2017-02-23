@@ -1,6 +1,6 @@
-# Composer Setup
+# Composer Setup on Windows
 
-These instructions for for Window's users; [for Mac instructions on setting up Composer, go here...]()
+These instructions are for Window's users; [for Mac instructions on setting up Composer, go here...](https://github.com/susanBuck/dwa15-spring2017-notes/blob/master/03_Laravel/03_Composer_Setup_Mac.md)
 
 Summary:
 
