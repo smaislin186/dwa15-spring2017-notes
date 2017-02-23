@@ -11,17 +11,23 @@ To start, use this command to see what your PATH variable is currently set to:
 echo $PATH
 ```
 
+Example output:
+
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-example-echo-path@2x.png' style='max-width:660px;' alt=''>
+
+Note that each path in the PATH variable is separated by a colon.
+
 One way to add new paths to your PATH variable is to add them in the `/etc/paths` file.  
 
 Let's use an example scenario of adding the PHP executable that comes with MAMP to your PATH. This will make it so that when you run the command `php` from command line, it will use MAMP's PHP executable.
 
-This semester, the version of PHP we're using with MAMP is `php5.6.25`:
+This semester, the version of PHP we're using with MAMP is `php7.1.0`:
 
-<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-identify-latest-version-of-php-in-mamp@2x.png' style='max-width:500px'>
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-identify-latest-version-of-php-in-mamp@2x.png' style='max-width:538px'>
 
-If you dig into the MAMP folder contents on your computer, you can find a PHP executable in `/Applications/MAMP/bin/php/php5.6.25/bin`, so that's the path we want to add.
+If you dig into the MAMP folder contents on your computer, you can find a PHP executable in `/Applications/MAMP/bin/php/php7.1.0/bin`, so that's the path we want to add.
 
-<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-finding-php-in-mamp@2x.png' style='max-width:1121px; width:100%' alt='Finding PHP in MAMP'>
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-finding-php-in-mamp@2x.png' style='max-width:1433; width:100%' alt='Finding PHP in MAMP'>
 
 Using Nano and the `sudo` command, open `/etc/paths`:
 
@@ -29,13 +35,13 @@ Using Nano and the `sudo` command, open `/etc/paths`:
 $ sudo nano /etc/paths
 ```
 
-At the *start* of `/etc/paths`, add this line:
+At the **top** of `/etc/paths`, add this line:
 
 ```xml
-/Applications/MAMP/bin/php/php5.6.25/bin
+/Applications/MAMP/bin/php/php7.1.0/bin
 ```
 
-<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-append-to-paths@2x.png' style='max-width:1136px; width:100%' alt=''>
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-append-to-paths@2x.png' style='max-width:803px; width:100%' alt=''>
 
 Save your changes (`ctrl` + `x`, then `y`, then *Enter*).
 
@@ -54,11 +60,11 @@ $ php -v
 Expected output:
 ```xml
 $ which php
-/Applications/MAMP/bin/php/php5.6.10/bin/php
+/Applications/MAMP/bin/php/php7.1.0/bin/php
 $ php -v
-PHP 5.6.25 (cli) (built: Aug 25 2016 17:30:26)
+PHP 7.1.0 (cli) (built: Dec 15 2016 18:04:29) ( NTS )
 Copyright (c) 1997-2016 The PHP Group
-Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+Zend Engine v3.1.0-dev, Copyright (c) 1998-2016 Zend Technologies
 ```
 
 
@@ -71,13 +77,11 @@ To begin, use this command to see what your PATH variable is currently set to:
 PATH
 ```
 
-PATH variables in Windows are set via *My Computer* > *Properties* (alternatively, you can get here by running `sysdm.cpl` from Command Line)
+Example output:
 
-Then, from the *Properties* screen, go to *Advanced* > *Environment Variables* > *Path*.
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-example-echo-path-windows@2x.png' style='max-width:942px;' alt=''>
 
-You'll find `Path` under *System variables*. Select it and click *Edit*.
-
-<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-windows-getting-to-path@2x.png' style='max-width:925px; width:100%' alt=''>
+Note that each path in the PATH variable is separated by a colon.
 
 Let's use an example scenario of adding the PHP executable that comes with XAMPP to your PATH. This will make it so that when you run the command `php` from command line, it will use XAMPP's PHP executable.
 
@@ -87,13 +91,23 @@ XAMPP includes a php executable located at `C:\xampp\php\`:
 
 ...so that's the path we want to add.
 
-From within the Environment Variables screen we navigated to above, edit your `Path` *System Variable* by appending `c:\xampp\php\` to the end.
+To edit PATH variables in Windows...
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-setting-path-variable-on-windows@2x.png' class='' style='max-width:972px; width:100%' alt='Editing your PATH in Windows'>
+1. Goto *My Computer* > *Properties* (alternatively, you can get here by running `sysdm.cpl` from Command Line)
+
+2. Then, from the *Properties* screen, go to *Advanced* > *Environment Variables* > *Path*.
+
+3. You'll find `Path` under *System variables*. Select it and click *Edit*.
+
+4. Then, add a new path and set it to `c:\xampp\php\` to the end (be sure to include the trailing backslash at the end).
+
+Above steps illustrated:
+
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-setting-path-variable-on-windows@2x.png' class='' style='max-width:1714px; width:100%' alt='Editing your PATH in Windows'>
 
 Ok/Save your changes.
 
-Restart Cmder.
+Close and restart Cmder. (This step is important! If you don't do this, your changes won't take effect)
 
 Test it out:
 
@@ -109,12 +123,11 @@ Expected output:
 ```xml
 $ where.exe php
 C:\xampp\php\php.exe
-C:\xampp\php\php.exe
 
 $ php -v
-PHP 5.6.15 (cli) (built: Oct 29 2015 12:40:36)
-Copyright (c) 1997-2015 The PHP Group
-Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
+PHP 7.0.13 (cli) (built: Nov 8 2016 13:45:27) ( ZTS )
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 ```
 
 
