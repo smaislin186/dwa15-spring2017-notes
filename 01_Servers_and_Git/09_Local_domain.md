@@ -1,6 +1,6 @@
 **SUPPLEMENTAL/OPTIONAL MATERIAL**
 
-Within your local system, you'll eventually want to work on different applications, sometimes even at the same time. Given this, it can be a drag to have to reconfigure your DocumentRoot for http://localhost every time you want to switch between apps.
+Within your local system, you'll eventually want to work on different applications, sometimes even at the same time. Given this, it can be a drag to have to reconfigure the DocumentRoot for `http://localhost` every time you want to switch between apps.
 
 In the following notes we'll set up __Virtual Hosts__ for individual apps so that you can have local URLs specific to each app you're working on.
 
@@ -8,10 +8,9 @@ With these instructions you could set it up so that...
 
 + `http://helloworld.yourdomain.com` has a local equivalent at `http://helloworld.loc`
 + `http://foobooks.yourdomain.com` has a local equivalent at `http://foobooks.loc`
-+ `http://p1.yourdomain.com` has a local equivalent at `http://p1.loc`
-+ `http://p2.yourdomain.com` has a local equivalent at `http://p2.loc`
-+ `http://p3.yourdomain.com` has a local equivalent at `http://p3.loc`
-+ `http://p4.yourdomain.com` has a local equivalent at `http://p4.loc`
++ `http://a1.yourdomain.com` has a local equivalent at `http://a1.loc`
++ `http://a2.yourdomain.com` has a local equivalent at `http://p2.loc`
++ etc...
 
 In the notes below, we'll set up `http://foobooks.loc` as our example.
 
@@ -92,11 +91,7 @@ Windows/Cmder:
 $ elevate nano c:\xampp\apache\conf\extra\httpd-vhosts.conf
 ```
 
-At the bottom of this file you'll see two example virtual host blocks, one for `dummy-host.example.com` and another for `dummy-host2.example.com`. __Delete these.__
-
-<img src='http://making-the-internet.s3.amazonaws.com/vc-vhost-examples@2x.png' class='' style='max-width:728px; width:75%' alt=''>
-
-Now, add your own VirtualHost block:
+At the bottom of this file, add your own VirtualHost block:
 
 Mac/MAMP users, yours might look something like this:
 ```txt
@@ -146,10 +141,10 @@ Make sure you explicitly type in `http://foobooks.loc` with `http://` at the beg
 
 After you make the above change you'll notice that http://localhost no longer works as expected&mdash; instead of pointing the document root you configure in MAMP/XAMPP, it will start pointing to the first VirtualHost block in your `httpd-vhosts.conf` file.
 
-To fix this, you should add a VirtualHost block specifically for http://localhost
+To fix this, you can add a VirtualHost block specifically for `http://localhost`. I recommend having localhost just point to your htdocs folder.
 
 For Mac/MAMP users:
-```xml
+```txt
 <VirtualHost *:80>
     ServerName localhost
     DocumentRoot /Applications/MAMP/htdocs
@@ -190,7 +185,8 @@ Note how it's only Steps 2 and 3 above that need to be repeated for any new apps
 
 
 
-## Tips
-* Make shortcuts to `httpd-vhosts.conf` and `hosts` for quick access in the future.
-* [MAMP Pro ($59)](http://www.mamp.info/en/mamp-pro/) offers a point and click interface to quickly edit hosts, in addition to [other features](http://www.mamp.info/en/mamp-pro/features/matrix.html).
-* If you run into any problems, check your Apache error log.
+## Troubleshooting
+If you run into problems, check your Apache error log for clues:
+
++ Mac/MAMP: `/Applications/MAMP/logs/apache_error_log`
++ Windows/XAMPP: `c:\xampp\apache\logs\error.log`
