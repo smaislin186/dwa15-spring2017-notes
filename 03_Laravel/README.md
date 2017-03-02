@@ -1,1 +1,1 @@
-Notes regarding Laravel will be published here.
+Lecture example: <https://github.com/susanBuck/foobooks>
